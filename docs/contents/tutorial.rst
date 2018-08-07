@@ -1,0 +1,4 @@
+.. index:: ! tutorial
+
+Tutorial
+========
