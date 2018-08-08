@@ -19,8 +19,8 @@ Contents
 .. toctree::
     :maxdepth: 2
 
-    introduction.rst
-    installation.rst
-    tutorial.rst
-    reference.rst
-    links.rst
+    contents/introduction.rst
+    contents/installation.rst
+    contents/tutorial.rst
+    contents/reference.rst
+    contents/links.rst
