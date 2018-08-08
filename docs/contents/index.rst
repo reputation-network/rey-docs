@@ -11,16 +11,6 @@ This is the documentation for building and deploying REY apps.
 .. note::
     There is a `tech paper that discusses the Reputation Network design details <https://reputation.network/papers/tech>`_ in depth. For a conceptual description, the former paper is the reference to check.
 
-Useful links
-------------
-
-* `Website <https://reputation.network>`_
-* `Source Code <https://github.com/reputation-network>`_
-* `Overview paper <https://reputation.network/papers/overview>`_
-* `Tech paper <https://reputation.network/papers/tech>`_
-* `Patent paper <https://reputation.network/papers/patent>`_
-* `Discord chat <https://discord.gg/YFWVDKY>`_
-
 Contents
 ========
 
@@ -32,4 +22,5 @@ Contents
     introduction.rst
     installation.rst
     tutorial.rst
-    elements.rst
+    reference.rst
+    links.rst

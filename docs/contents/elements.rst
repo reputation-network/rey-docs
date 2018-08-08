@@ -1,4 +1,0 @@
-.. index:: ! elements
-
-Elements
-========
