@@ -31,7 +31,7 @@ Sample apps
 
 In the :ref:`tutorial` section you can find the quick start guide to create your first Reputation Network app.
 
-Some sample apps have been already built as demo for developers. They use Traity as data source and do a computation on its data. They have been deployed and ready to use without cost:
+Some sample apps have been already built as demo for developers. They use Traity as data source and do a computation on its data. They are deployed and ready to use without cost:
 
 - Your risk score
 - Your Traity reputation
