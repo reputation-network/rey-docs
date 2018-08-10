@@ -10,5 +10,4 @@ Reference
     reference/permissions.rst
     reference/transactions.rst
     reference/gatekeeper.rst
-    reference/smart_contract.rst
     reference/serializations.rst
