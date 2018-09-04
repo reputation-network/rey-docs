@@ -4,4 +4,8 @@
 Tutorial
 ========
 
-Blublu
+.. toctree::
+    :maxdepth: 2
+
+    tutorial/hello_world.rst
+    tutorial/risk_score.rst
