@@ -29,7 +29,7 @@ In order to use a REY app, a user needs to follow the next steps:
 Sample apps
 -----------
 
-In the :ref:`tutorial` section you can find the quick start guide to create your first Reputation Network app.
+In the :ref:`tutorial <tutorial>` section you can find the quick start guide to create your first Reputation Network app.
 
 Some sample apps have been already built as demo for developers. They use Traity as data source and do a computation on its data. They are deployed and ready to use without cost:
 

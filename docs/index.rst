@@ -22,5 +22,6 @@ Contents
     contents/introduction.rst
     contents/installation.rst
     contents/tutorial.rst
+    contents/environments.rst
     contents/reference.rst
     contents/links.rst

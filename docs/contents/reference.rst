@@ -11,3 +11,4 @@ Reference
     reference/transactions.rst
     reference/gatekeeper.rst
     reference/serializations.rst
+    reference/registry.rst
