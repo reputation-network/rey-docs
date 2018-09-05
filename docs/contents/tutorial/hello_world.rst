@@ -14,7 +14,7 @@ Our first REY app will simply return a magic number that is calculated out of th
 Requirements
 ------------
 
-Make sure to have `docker <http://docker.com>`_ properly installed.
+Make sure to have `Docker <http://docker.com>`_ properly installed.
 
 
 Start a blockchain node
@@ -42,12 +42,26 @@ We'll build a simple Ruby service that computes the magic number given a subject
 
 .. code:: ruby
 
+  require 'base64'
   require 'json'
   require 'webrick'
-  manifest = File.read("#{__dir__}/manifest.json")
-  WEBrick::HTTPServer.new(:Port => 8080).tap { |server|
-    server.mount_proc('/manifest') { |request, response| response.body = manifest}
-    server.mount_proc('/data') { |request, response| response.body = "{\"data\":#{rand}}" }
+
+  manifest = JSON.parse File.read('./rey-manifest.json')
+  app_seed = manifest['address'].to_i(16) + (ENV['SECRET_SALT'] || '').to_i(16)
+
+  def parse_subject_header(req)
+      value = req.header['x-permission-subject'].first || ""
+      Base64.decode64(value).to_i(16)
+  end
+
+  WEBrick::HTTPServer.new(:Port => 8080).tap {|srv|
+    srv.mount_proc('/manifest') do |req, res|
+      res.body = JSON.fast_generate(manifest)
+    end
+    srv.mount_proc('/data') do |req, res|
+      subject = parse_subject_header(req)
+      res.body = JSON.fast_generate(data: Random.new(app_seed + subject).rand)
+    end
   }.start
 
 The service has two endpoints:
