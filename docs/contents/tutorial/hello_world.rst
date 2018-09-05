@@ -11,10 +11,11 @@ Our first REY app will simply return a magic number that is calculated out of th
 - Start the gatekeeper to make the service available in a secure way.
 - Publish the app in the registry.
 
+
 Requirements
 ------------
 
-Make sure to have `Docker <http://docker.com>`_ properly installed.
+Make sure to have followed the :ref:`installation <installation>` instructions.
 
 
 Start a blockchain node
@@ -26,9 +27,9 @@ A docker image with REY's registry and smart contract already published is avail
 
 .. code::
 
-  $ docker run reputationnetwork:node -p 8545:8545
+  $ rey-cli dev node
 
-This will launch the geth node with an open port to connect via RPC and interact with it. So far, we just need to know that the account with address ``0x88032398beab20017e61064af3c7c8bd38f4c968`` has funds and is available to be used. As said, the smart contracts are already deployed:
+This will launch the geth node with an open port to connect via RPC and interact with it. So far, we just need to know that the account with address ``0x88032398beab20017e61064af3c7c8bd38f4c968`` has funds and is available to be used. As said, the smart contracts are already deployed and have the following addresses:
 
 - Main smart contract address: ``0x6224d471b8590de463d27b067174b566b4b0b041``
 
@@ -93,7 +94,7 @@ To run the gatekeeper, simply use:
 
 .. code::
 
-  $ docker run -p 10000:8081 -e TARGET=http://localhost:8080/data MANIFEST=http://localhost:8080/manifest NODE=http://localhost:8545 reputationnetwork:gatekeeper
+  $ rey-cli dev gatekeeper -e TARGET=http://localhost:8080/data MANIFEST=http://localhost:8080/manifest
 
 It requires some parameters to specify where to find the manifest, the app's endpoint, and the blockchain node. It's also required to redirect the port 10000 to the desired port that will be used to publish the app.
 
@@ -104,3 +105,10 @@ Publishing the app
 
 The app needs to be published in REY's registry so that others can find it just by its public key. The registry associates a public key with its manifest URL.
 
+To publish the app, you'll need to use REY's UI at your browser, which can be started with:
+
+.. code::
+
+  $ rey-cli dev ui
+
+You'll also be able to run the app from the UI.
