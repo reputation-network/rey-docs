@@ -17,7 +17,7 @@ To launch gatekeeper, simply use ``rey-cli``:
 
 .. code::
 
-  $ rey dev gatekeeper -e TARGET=http://127.0.0.1:9400/data -e MANIFEST=http://127.0.0.1:9400/manifest
+  $ rey-cli dev gatekeeper -e TARGET=http://127.0.0.1:9400/data -e MANIFEST=http://127.0.0.1:9400/manifest
 
 Configuration
 -------------
