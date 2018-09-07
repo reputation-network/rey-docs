@@ -15,9 +15,9 @@ Development
 
 Before making our app available to everyone, we'll be building it inside our own development environment. To achieve this, the simplest way is to run your own private node with REY's smart contract and registry already deployed. There's a Docker image that provides a ``geth`` instance that has both smart contracts already deployed and ready to use at the following addresses:
 
-- Main smart contract address: ``0x6224d471b8590de463d27b067174b566b4b0b041``.
+- Main smart contract address: ``0x76C19376b275A5d77858c6F6d5322311eEb92cf5``.
 
-- Registry address: ``0xc25b4ff9eb6f52392eef1e103daacc7519795f01``.
+- Registry address: ``0x556ED3bEaF6b3dDCb1562d3F30f79bF86fFC05B9``.
 
 To start the node, make sure to have `Docker <http://docker.com>`_ properly installed, then run:
 
