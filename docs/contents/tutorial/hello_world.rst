@@ -43,27 +43,40 @@ We'll build a simple Ruby service that computes the magic number given a subject
 
 .. code:: ruby
 
+  require 'sinatra'
+  require 'sinatra/json'
   require 'base64'
-  require 'json'
-  require 'webrick'
 
-  manifest = JSON.parse File.read('./rey-manifest.json')
-  app_seed = manifest['address'].to_i(16) + (ENV['SECRET_SALT'] || '').to_i(16)
+  set :port, 8080
 
-  def parse_subject_header(req)
-      value = req.header['x-permission-subject'].first || ""
-      Base64.decode64(value).to_i(16)
+  USERNAME, PASSWORD = (ENV['AUTHENTICATION'] || 'user:password').split(':')
+  MANIFEST = {
+    version: '1.0',
+    name: 'Hello World',
+    description: 'Returns a magic number',
+    address: '0x75452430765476495',
+    app_url: 'http://localhost:8081/data',
+    app_reward: 0,
+    app_dependencies: []
+  }.freeze
+  APP_SEED = (MANIFEST[:address] + ENV['SECRET_SALT'].to_s).to_i(16).freeze
+
+  use Rack::Auth::Basic, "Protected Area" do |username, password|
+    username == USERNAME && password == PASSWORD
   end
 
-  WEBrick::HTTPServer.new(:Port => 8080).tap {|srv|
-    srv.mount_proc('/manifest') do |req, res|
-      res.body = JSON.fast_generate(manifest)
-    end
-    srv.mount_proc('/data') do |req, res|
-      subject = parse_subject_header(req)
-      res.body = JSON.fast_generate(data: Random.new(app_seed + subject).rand)
-    end
-  }.start
+  def parse_subject_header(headers)
+    headers['x-permission-subject']
+  end
+
+  get '/manifest' do
+    json MANIFEST
+  end
+
+  get '/data' do
+    subject_seed = Base64.decode64(parse_subject_header(request.env) || '').to_i(16)
+    json data: Random.new(APP_SEED + subject_seed).rand
+  end
 
 The service has two endpoints:
 
@@ -75,7 +88,7 @@ The service has two endpoints:
     "version": "1.0",
     "name": "Hello World",
     "description": "Returns a magic number",
-    "address": "",
+    "address": "0x75452430765476495",
     "app_url": "http://localhost:8081/data",
     "app_reward": 0,
     "app_dependencies": []
@@ -94,11 +107,11 @@ To run the gatekeeper, simply use:
 
 .. code::
 
-  $ rey-cli dev gatekeeper -e TARGET=http://localhost:8080/data MANIFEST=http://localhost:8080/manifest
+  $ rey-cli dev gatekeeper -e TARGET=http://user:password@localhost:8080/data MANIFEST=http://localhost:8080/manifest
 
 It requires some parameters to specify where to find the manifest, the app's endpoint, and the blockchain node. It's also required to redirect the port 10000 to the desired port that will be used to publish the app.
 
-Notice that the Ruby service should not be publicly accessible. It does not make any kind of access check, so only the gatekeeper should be publicly accessible. This is why the app's manifest file has port number 8081 as ``app_url``: app clients should query the gatekeeper, while the Ruby service should not be publicly reachable.
+Notice that the Ruby service is not publicly accessible. It does not make any kind of access check, so only the gatekeeper should be publicly accessible. This is why the app's manifest file has port number 8081 as ``app_url``: app clients should query the gatekeeper, while the Ruby service requires HTTP authentication that only the gatekeeper should know.
 
 Publishing the app
 ------------------
