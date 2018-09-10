@@ -25,7 +25,18 @@ To start the node, make sure to have `Docker <http://docker.com>`_ properly inst
 
   $ rey-cli dev node
 
-This will launch the geth node with an open port to connect via RPC and interact with it. The account with address ``0x88032398beab20017e61064af3c7c8bd38f4c968`` has funds and is available to be used.
+This will launch the geth node with an open port to connect via RPC and interact with it. The following accounts have funds and are available to be used in the node:
+
+- ``0x31bb9d47bc8bf6422ff7dcd2ff53bc90f8f7b009``
+- ``0x88032398beab20017e61064af3c7c8bd38f4c968``
+- ``0xc25b4ff9eb6f52392eef1e103daacc7519795f01``
+- ``0x6d644c57247de51da20797f14dceedfbc4ef6561``
+- ``0xe370c47450427a2baa9bff3557bf574162f3ca54``
+- ``0xefdd1029b00e1add52c478f85c00c1011a347128``
+- ``0x60cb2204f342dd35bf5a328a03d86dd71d4372ec``
+- ``0x6224d471b8590de463d27b067174b566b4b0b041``
+- ``0x128ab682efe2a1ec3970d374d23a7f249fb9e8df``
+- ``0x44f1d336e4fdf189d2dadd963763883582c45312``
 
 The :ref:`tutorial <tutorial>` shows how to interact with the registry and smart contract to publish a hello world app on the development environment.
 
