@@ -35,11 +35,10 @@ This will launch the geth node with an open port to connect via RPC and interact
 
 - Registry address: ``0x556ED3bEaF6b3dDCb1562d3F30f79bF86fFC05B9``
 
-
 App logic
 ---------
 
-We'll build a simple Ruby service that computes the magic number given a subject's public key:
+We'll build a simple Ruby service that computes the magic number given a subject's public key. Let's write a file called server.rb:
 
 .. code:: ruby
 
@@ -54,7 +53,7 @@ We'll build a simple Ruby service that computes the magic number given a subject
     version: '1.0',
     name: 'Hello World',
     description: 'Returns a magic number',
-    address: '0x75452430765476495',
+    address: '0x88032398beab20017e61064af3c7c8bd38f4c968',
     app_url: 'http://localhost:8081/data',
     app_reward: 0,
     app_dependencies: []
@@ -78,7 +77,13 @@ We'll build a simple Ruby service that computes the magic number given a subject
     json data: Random.new(APP_SEED + subject_seed).rand
   end
 
-The service has two endpoints:
+The previous Ruby script can be run with:
+
+.. code::
+
+  $ ruby server.rb
+
+This will launch a server that listens on port 8080 and has two endpoints:
 
 - ``/manifest``: Returns the following manifest file that is used to provide basic information about the app:
 
@@ -88,11 +93,13 @@ The service has two endpoints:
     "version": "1.0",
     "name": "Hello World",
     "description": "Returns a magic number",
-    "address": "0x75452430765476495",
+    "address": "0x88032398beab20017e61064af3c7c8bd38f4c968",
     "app_url": "http://localhost:8081/data",
     "app_reward": 0,
     "app_dependencies": []
   }
+
+As you can see, we're using the address ``0x88032398beab20017e61064af3c7c8bd38f4c968`` to identify the app. This address was mentioned before, as it's one of the accounts that are funded and ready to use in the development blockchain node. A similar process would be required in a production environment (i.e., obtaining an account and funding it).
 
 - ``/data``: Returns the actual output of the app (a magic number).
 
@@ -101,7 +108,7 @@ As you can see, there's no kind of permission check in the service. This is left
 Launch gatekeeper
 -----------------
 
-REY's Gatekeeper is a proxy that implements most of REY's protocol to facilitate building REY apps. The previous service does not have any kind of permission check, as this task is delegated to REY's Gatekeeper, which can fulfil the task with little configuration.
+REY's Gatekeeper is a proxy that implements most of REY's protocol to facilitate building REY apps. The Ruby service built previously does not have any kind of permission check, as this task is delegated to REY's Gatekeeper, which can fulfil the task with little configuration.
 
 To run the gatekeeper, simply use:
 
@@ -124,4 +131,4 @@ To publish the app, you'll need to use REY's UI at your browser, which can be st
 
   $ rey-cli dev ui
 
-You'll also be able to run the app from the UI.
+You'll also be able to query the app from the UI.
