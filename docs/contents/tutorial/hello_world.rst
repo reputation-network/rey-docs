@@ -114,9 +114,9 @@ To run the gatekeeper, simply use:
 
 .. code::
 
-  $ rey-cli dev gatekeeper -e TARGET=http://user:password@localhost:8080/data MANIFEST=http://localhost:8080/manifest
+  $ rey-cli dev gatekeeper -e TARGET=http://user:password@localhost:8080/data MANIFEST=http://localhost:8080/manifest APP_ADDRESS=0x88032398beab20017e61064af3c7c8bd38f4c968
 
-It requires some parameters to specify where to find the manifest, the app's endpoint, and the blockchain node. It's also required to redirect the port 10000 to the desired port that will be used to publish the app.
+It requires some parameters to specify where to find the manifest, the app's endpoint, and the app's address. It's also required to redirect the port 10000 to the desired port that will be used to publish the app.
 
 Notice that the Ruby service is not publicly accessible. It does not make any kind of access check, so only the gatekeeper should be publicly accessible. This is why the app's manifest file has port number 8081 as ``app_url``: app clients should query the gatekeeper, while the Ruby service requires HTTP authentication that only the gatekeeper should know.
 
