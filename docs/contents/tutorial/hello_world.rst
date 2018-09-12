@@ -29,7 +29,7 @@ A docker image with REY's registry and smart contract already published is avail
 
   $ rey-cli dev node
 
-This will launch the geth node with an open port to connect via RPC and interact with it. So far, we just need to know that the account with address ``0x88032398beab20017e61064af3c7c8bd38f4c968`` has funds and is available to be used. As said, the smart contracts are already deployed and have the following addresses:
+This will launch the :ref:`development environment <development>` blockchain node with a port open to RPC connections. So far, we just need to know that the account with address ``0x88032398beab20017e61064af3c7c8bd38f4c968`` has funds and is available to be used. As said, the smart contracts are already deployed and have the following addresses:
 
 - Main smart contract address: ``0x76C19376b275A5d77858c6F6d5322311eEb92cf5``
 
