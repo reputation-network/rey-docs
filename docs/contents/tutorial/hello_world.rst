@@ -65,7 +65,7 @@ We'll build a simple Ruby service that computes the magic number given a subject
   end
 
   def parse_subject_header(headers)
-    headers['x-permission-subject']
+    Base64.decode64(headers['x-permission-subject'] || '')
   end
 
   get '/manifest' do
@@ -73,11 +73,11 @@ We'll build a simple Ruby service that computes the magic number given a subject
   end
 
   get '/data' do
-    subject_seed = Base64.decode64(parse_subject_header(request.env) || '').to_i(16)
+    subject_seed = parse_subject_header(request.env).to_i(16)
     json data: Random.new(APP_SEED + subject_seed).rand
   end
 
-The previous Ruby script can be run with:
+The previous script requires the `Ruby language <http://ruby-lang.org>`_ and the `Sinatra <http://sinatrarb.com>`_ library (``gem install sinatra``) and can be run with:
 
 .. code::
 
