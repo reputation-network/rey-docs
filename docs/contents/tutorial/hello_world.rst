@@ -45,6 +45,7 @@ We'll build a simple Ruby service that computes the magic number given a subject
   require 'sinatra'
   require 'sinatra/json'
   require 'base64'
+  require 'json'
 
   set :port, 8080
 
@@ -114,7 +115,7 @@ To run the gatekeeper, simply use:
 
 .. code::
 
-  $ rey-cli dev gatekeeper -e TARGET=http://user:password@localhost:8080/data -e MANIFEST=http://user:password@localhost:8080/manifest -e APP_ADDRESS=0x88032398beab20017e61064af3c7c8bd38f4c968
+  $ rey-cli dev gatekeeper -e TARGET=http://user:password@localhost:8080 -e MANIFEST=http://user:password@localhost:8080/manifest -e APP_ADDRESS=0x88032398beab20017e61064af3c7c8bd38f4c968
 
 It requires some parameters to specify where to find the manifest, the app's endpoint, and the app's address.
 
@@ -132,3 +133,21 @@ You can publish the app's manifest with:
   $ rey-cli dev cmd publish-manifest 0x88032398beab20017e61064af3c7c8bd38f4c968 http://localhost:8081/manifest
 
 Remember that the manifest URL needs to be gatekeeper's one, as that's the one that does not require authentication. Gatekeeper will proxy the request to the manifest provided by the Ruby service.
+
+Reading the app
+---------------
+
+You can now query your app for data, but first you need to have a blockchain identity. For simplicity we will use one of the already available idenitities (also known as accounts) on the development node, whose address is ``0x60cb2204f342dd35bf5a328a03d86dd71d4372ec``.
+
+Also, in order to access the app's data we need an app params structure signed by the account you are querying data for (subject) and by the one querying it (reader), in this example both subject and reader are the same. We can generate a tokenized version of the said app params as follows:
+
+.. code::
+
+  $ rey-cli dev cmd generate-token 0x88032398beab20017e61064af3c7c8bd38f4c968 0x60cb2204f342dd35bf5a328a03d86dd71d4372ec
+
+This token can be later used to read data that the app has about ``0x60cb2204f342dd35bf5a328a03d86dd71d4372ec`` with the following command:
+
+.. code::
+
+  $ rey-cli dev cmd read-app 0x88032398beab20017e61064af3c7c8bd38f4c968 <...App Params Token...?
+ 
