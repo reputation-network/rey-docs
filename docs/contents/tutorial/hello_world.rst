@@ -41,40 +41,41 @@ App logic
 We'll build a simple Ruby service that computes the magic number given a subject's public key. Let's write a file called ``helloworld.rb``:
 
 .. code:: ruby
-require 'sinatra'
-require 'sinatra/json'
-require 'base64'
 
-set :port, 8080
+  require 'sinatra'
+  require 'sinatra/json'
+  require 'base64'
 
-USERNAME, PASSWORD = (ENV['AUTHENTICATION'] || 'user:password').split(':')
-MANIFEST = {
-  version: '1.0',
-  name: 'Hello World',
-  description: 'Returns a magic number',
-  address: '0x88032398beab20017e61064af3c7c8bd38f4c968',
-  app_url: 'http://localhost:8081/data',
-  app_reward: 0,
-  app_dependencies: []
-}.freeze
-APP_SEED = (MANIFEST[:address] + ENV['SECRET_SALT'].to_s).to_i(16).freeze
+  set :port, 8080
 
-use Rack::Auth::Basic, "Protected Area" do |username, password|
-  username == USERNAME && password == PASSWORD
-end
+  USERNAME, PASSWORD = (ENV['AUTHENTICATION'] || 'user:password').split(':')
+  MANIFEST = {
+    version: '1.0',
+    name: 'Hello World',
+    description: 'Returns a magic number',
+    address: '0x88032398beab20017e61064af3c7c8bd38f4c968',
+    app_url: 'http://localhost:8081/data',
+    app_reward: 0,
+    app_dependencies: []
+  }.freeze
+  APP_SEED = (MANIFEST[:address] + ENV['SECRET_SALT'].to_s).to_i(16).freeze
 
-def parse_subject_header(headers)
-  Base64.decode64(headers['HTTP_X_PERMISSION_SUBJECT'] || 'null').gsub(/\A"|"\Z/, '')
-end
+  use Rack::Auth::Basic, "Protected Area" do |username, password|
+    username == USERNAME && password == PASSWORD
+  end
 
-get '/manifest' do
-  json MANIFEST
-end
+  def parse_subject_header(headers)
+    Base64.decode64(headers['HTTP_X_PERMISSION_SUBJECT'] || 'null').gsub(/\A"|"\Z/, '')
+  end
 
-get '/data' do
-  subject_seed = parse_subject_header(request.env).to_i(16)
-  json data: Random.new(APP_SEED + subject_seed).rand
-end
+  get '/manifest' do
+    json MANIFEST
+  end
+
+  get '/data' do
+    subject_seed = parse_subject_header(request.env).to_i(16)
+    json data: Random.new(APP_SEED + subject_seed).rand
+  end
 
 The previous script requires the `Ruby language <http://ruby-lang.org>`_ and the `Sinatra <http://sinatrarb.com>`_ library (``gem install sinatra``) and can be run with:
 
