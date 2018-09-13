@@ -114,7 +114,7 @@ To run the gatekeeper, simply use:
 
 .. code::
 
-  $ rey-cli dev gatekeeper -e TARGET=http://user:password@localhost:8080/data MANIFEST=http://user:password@localhost:8080/manifest APP_ADDRESS=0x88032398beab20017e61064af3c7c8bd38f4c968
+  $ rey-cli dev gatekeeper -e TARGET=http://user:password@localhost:8080/data -e MANIFEST=http://user:password@localhost:8080/manifest -e APP_ADDRESS=0x88032398beab20017e61064af3c7c8bd38f4c968
 
 It requires some parameters to specify where to find the manifest, the app's endpoint, and the app's address.
 
@@ -125,10 +125,10 @@ Publishing the app
 
 The app needs to be published in REY's registry so that others can find it just by its public key. The registry associates a public key with its manifest URL.
 
-To publish the app, you'll need to use REY's UI at your browser, which can be started with:
+You can publish the app's manifest with:
 
 .. code::
 
-  $ rey-cli dev ui
+  $ rey-cli dev cmd publish-manifest 0x88032398beab20017e61064af3c7c8bd38f4c968 http://localhost:8081/manifest
 
-You'll also be able to query the app from the UI.
+Remember that the manifest URL needs to be gatekeeper's one, as that's the one that does not require authentication. Gatekeeper will proxy the request to the manifest provided by the Ruby service.

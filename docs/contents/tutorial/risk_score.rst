@@ -128,7 +128,7 @@ To run the gatekeeper, simply use:
 
 .. code::
 
-  $ rey-cli dev gatekeeper -p 8083 -e TARGET=http://user:password@localhost:8082/data MANIFEST=http://user:password@localhost:8082/manifest APP_ADDRESS=0x6d644c57247de51da20797f14dceedfbc4ef6561
+  $ rey-cli dev gatekeeper -p 8083 -e TARGET=http://user:password@localhost:8082/data -e MANIFEST=http://user:password@localhost:8082/manifest -e APP_ADDRESS=0x6d644c57247de51da20797f14dceedfbc4ef6561
 
 It requires some parameters to specify where to find the manifest, the app's endpoint, and the app's address. Note that this is risk score's gatekeeper, so we need to specify a port to prevent overlapping with hello world's gatekeeper port.
 
@@ -137,10 +137,8 @@ Publishing the app
 
 The app needs to be published in REY's registry so that others can find it just by its public key. The registry associates a public key with its manifest URL.
 
-To publish the app, you'll need to use REY's UI at your browser, which can be started with:
+You can publish the app's manifest with:
 
 .. code::
 
-  $ rey-cli dev ui
-
-You'll also be able to query the app from the UI.
+  $ rey-cli dev cmd publish-manifest 0x6d644c57247de51da20797f14dceedfbc4ef6561 http://localhost:8083/manifest
