@@ -41,42 +41,40 @@ App logic
 We'll build a simple Ruby service that computes the magic number given a subject's public key. Let's write a file called ``helloworld.rb``:
 
 .. code:: ruby
+require 'sinatra'
+require 'sinatra/json'
+require 'base64'
 
-  require 'sinatra'
-  require 'sinatra/json'
-  require 'base64'
-  require 'json'
+set :port, 8080
 
-  set :port, 8080
+USERNAME, PASSWORD = (ENV['AUTHENTICATION'] || 'user:password').split(':')
+MANIFEST = {
+  version: '1.0',
+  name: 'Hello World',
+  description: 'Returns a magic number',
+  address: '0x88032398beab20017e61064af3c7c8bd38f4c968',
+  app_url: 'http://localhost:8081/data',
+  app_reward: 0,
+  app_dependencies: []
+}.freeze
+APP_SEED = (MANIFEST[:address] + ENV['SECRET_SALT'].to_s).to_i(16).freeze
 
-  USERNAME, PASSWORD = (ENV['AUTHENTICATION'] || 'user:password').split(':')
-  MANIFEST = {
-    version: '1.0',
-    name: 'Hello World',
-    description: 'Returns a magic number',
-    address: '0x88032398beab20017e61064af3c7c8bd38f4c968',
-    app_url: 'http://localhost:8081/data',
-    app_reward: 0,
-    app_dependencies: []
-  }.freeze
-  APP_SEED = (MANIFEST[:address] + ENV['SECRET_SALT'].to_s).to_i(16).freeze
+use Rack::Auth::Basic, "Protected Area" do |username, password|
+  username == USERNAME && password == PASSWORD
+end
 
-  use Rack::Auth::Basic, "Protected Area" do |username, password|
-    username == USERNAME && password == PASSWORD
-  end
+def parse_subject_header(headers)
+  Base64.decode64(headers['HTTP_X_PERMISSION_SUBJECT'] || 'null').gsub(/\A"|"\Z/, '')
+end
 
-  def parse_subject_header(headers)
-    JSON.parse(Base64.decode64(headers['x-permission-subject'] || 'null'))
-  end
+get '/manifest' do
+  json MANIFEST
+end
 
-  get '/manifest' do
-    json MANIFEST
-  end
-
-  get '/data' do
-    subject_seed = parse_subject_header(request.env).to_i(16)
-    json data: Random.new(APP_SEED + subject_seed).rand
-  end
+get '/data' do
+  subject_seed = parse_subject_header(request.env).to_i(16)
+  json data: Random.new(APP_SEED + subject_seed).rand
+end
 
 The previous script requires the `Ruby language <http://ruby-lang.org>`_ and the `Sinatra <http://sinatrarb.com>`_ library (``gem install sinatra``) and can be run with:
 
@@ -115,7 +113,7 @@ To run the gatekeeper, simply use:
 
 .. code::
 
-  $ rey-cli dev gatekeeper -e TARGET=http://user:password@localhost:8080 -e MANIFEST=http://user:password@localhost:8080/manifest -e APP_ADDRESS=0x88032398beab20017e61064af3c7c8bd38f4c968
+  $ rey-cli dev gatekeeper -e TARGET_URL=http://user:password@localhost:8080 -e MANIFEST_URL=http://user:password@localhost:8080/manifest -e APP_ADDRESS=0x88032398beab20017e61064af3c7c8bd38f4c968
 
 It requires some parameters to specify where to find the manifest, the app's endpoint, and the app's address.
 
