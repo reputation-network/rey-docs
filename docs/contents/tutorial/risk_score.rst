@@ -128,7 +128,7 @@ To run the gatekeeper, simply use:
 
 .. code::
 
-  $ rey-cli dev gatekeeper -p 8083 -e TARGET=http://user:password@localhost:8082/data -e MANIFEST=http://user:password@localhost:8082/manifest -e APP_ADDRESS=0x6d644c57247de51da20797f14dceedfbc4ef6561
+  $ rey-cli dev gatekeeper -p 8083 -e TARGET=http://user:password@localhost:8082 -e MANIFEST=http://user:password@localhost:8082/manifest -e APP_ADDRESS=0x6d644c57247de51da20797f14dceedfbc4ef6561
 
 It requires some parameters to specify where to find the manifest, the app's endpoint, and the app's address. Note that this is risk score's gatekeeper, so we need to specify a port to prevent overlapping with hello world's gatekeeper port.
 
