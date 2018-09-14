@@ -38,6 +38,10 @@ This will launch the geth node with an open port to connect via RPC and interact
 - ``0x128ab682efe2a1ec3970d374d23a7f249fb9e8df``
 - ``0x44f1d336e4fdf189d2dadd963763883582c45312``
 
+.. note::
+
+  The development blockchain node has built-in accounts that have no password. When running REY commands, simply enter a blank password when prompted.
+
 The :ref:`tutorial <tutorial>` shows how to interact with the registry and smart contract to publish a hello world app on the development environment.
 
 .. _testnet:

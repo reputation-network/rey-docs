@@ -133,6 +133,11 @@ You can publish the app's manifest with:
 
 Remember that the manifest URL needs to be gatekeeper's one, as that's the one that does not require authentication. Gatekeeper will proxy the request to the manifest provided by the Ruby service.
 
+.. note::
+
+  The development blockchain node has built-in accounts that have no password. When running REY commands, simply enter a blank password when prompted.
+
+
 Reading the app
 ---------------
 

@@ -143,6 +143,10 @@ You can publish the app's manifest with:
 
   $ rey-cli dev cmd publish-manifest 0x6d644c57247de51da20797f14dceedfbc4ef6561 http://localhost:8083/manifest
 
+.. note::
+
+  The development blockchain node has built-in accounts that have no password. When running REY commands, simply enter a blank password when prompted.
+
 Reading the app
 ---------------
 
