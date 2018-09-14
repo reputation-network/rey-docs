@@ -77,7 +77,7 @@ We'll build a simple Ruby service that computes the magic number given a subject
     json data: Random.new(APP_SEED + subject_seed).rand
   end
 
-The previous script requires the `Ruby language <http://ruby-lang.org>`_ and the `Sinatra <http://sinatrarb.com>`_ library (``gem install sinatra``) and can be run with:
+The previous script requires the `Ruby language <http://ruby-lang.org>`_ and the `Sinatra <http://sinatrarb.com>`_ library (``gem install sinatra sinatra-contrib``) and can be run with:
 
 .. code::
 
