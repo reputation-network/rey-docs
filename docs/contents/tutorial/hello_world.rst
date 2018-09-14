@@ -138,15 +138,9 @@ Reading the app
 
 You can now query your app for data, but first you need to have a blockchain identity. For simplicity we will use one of the already available idenitities (also known as accounts) on the development node, whose address is ``0x60cb2204f342dd35bf5a328a03d86dd71d4372ec``.
 
-Also, in order to access the app's data we need an app params structure signed by the account you are querying data for (subject) and by the one querying it (reader), in this example both subject and reader are the same. We can generate a tokenized version of the said app params as follows:
+To read what the app (with address ``0x88032398beab20017e61064af3c7c8bd38f4c968``) returns about a subject (with address ``0x60cb2204f342dd35bf5a328a03d86dd71d4372ec``), simply use with the following command:
 
 .. code::
 
-  $ rey-cli dev cmd generate-token 0x88032398beab20017e61064af3c7c8bd38f4c968 0x60cb2204f342dd35bf5a328a03d86dd71d4372ec
+  $ rey-cli dev cmd read-app 0x88032398beab20017e61064af3c7c8bd38f4c968 0x60cb2204f342dd35bf5a328a03d86dd71d4372ec
 
-This token can be later used to read data that the app has about ``0x60cb2204f342dd35bf5a328a03d86dd71d4372ec`` with the following command:
-
-.. code::
-
-  $ rey-cli dev cmd read-app 0x88032398beab20017e61064af3c7c8bd38f4c968 <...App Params Token...?
- 

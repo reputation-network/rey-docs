@@ -142,3 +142,15 @@ You can publish the app's manifest with:
 .. code::
 
   $ rey-cli dev cmd publish-manifest 0x6d644c57247de51da20797f14dceedfbc4ef6561 http://localhost:8083/manifest
+
+Reading the app
+---------------
+
+You can now query your app for data, but first you need to have a blockchain identity. For simplicity we will use one of the already available idenitities (also known as accounts) on the development node, whose address is ``0x60cb2204f342dd35bf5a328a03d86dd71d4372ec``.
+
+To read what the app (with address ``0x6d644c57247de51da20797f14dceedfbc4ef6561``) returns about a subject (with address ``0x60cb2204f342dd35bf5a328a03d86dd71d4372ec``), simply use with the following command:
+
+.. code::
+
+  $ rey-cli dev cmd read-app 0x6d644c57247de51da20797f14dceedfbc4ef6561 0x60cb2204f342dd35bf5a328a03d86dd71d4372ec
+
