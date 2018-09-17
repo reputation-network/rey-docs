@@ -12,3 +12,4 @@ Reference
     reference/gatekeeper.rst
     reference/serializations.rst
     reference/registry.rst
+    reference/repositories.rst

@@ -1,14 +1,14 @@
-.. index:: ! gatekeeper
-.. _gatekeeper:
+.. index:: ! gatekeepr
+.. _gatekeepr:
 
 Gatekeeper
 ==========
 
-The gatekeeper is the easiest way to publish an app in REY. It acts as a proxy to a server that provides the actual functionality of an app.
+REY's `gatekeeper <http://github.com/reputation-network/rey-gatekeeper>`_ is a proxy to a target server that provides the actual functionality of a REY app. Using the gatekeeper is the easiest way to publish an app in REY.
 
-The main idea is to abstract app developers from REY's protocol and just focussing on the app's business logic.
+The main idea is to abstract app developers from REY's protocol to just focus on the app's business logic.
 
-Take, for example, an app returns purchases data about people in an e-commerce. The gatekeeper would be the server that is available to the outer world. It'd process permissions and perform checkouts, and will forward valid requests to the target server that implements the actual business logic and returns the output.
+Take, for example, an app that returns purchase data about people in an e-commerce. The gatekeeper would be the server that is available to the outer world. It'd process permissions and perform cashouts, and will forward valid requests to the target server that implements the actual business logic and returns the output.
 
 Installation
 ------------
