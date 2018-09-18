@@ -1,8 +1,8 @@
-.. index:: ! repositories
-.. _repositories:
+.. index:: ! projects
+.. _projects:
 
-Repositories
-============
+Projects
+========
 
 REY's software is splitted across different projects that are available in several Github repositories. Here's a list of all of them.
 
