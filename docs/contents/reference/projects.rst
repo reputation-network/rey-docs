@@ -4,7 +4,7 @@
 Projects
 ========
 
-REY's software is splitted across different projects that are available in several Github repositories. Here's a list of all of them.
+REY's software is split across different projects that are available in several Github repositories. Here's a list of all of them.
 
 
 rey-docs
