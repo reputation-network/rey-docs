@@ -18,9 +18,10 @@ A sample manifest file looks as follows:
   { "version": "1.0",
     "name": "Super Scoring App",
     "description": "This app provides great risk scores",
+    "homepage_url": "http://example.com/super-scoring-app",
     "picture_url": "http://example.com/logo-square.png",
     "address": "0xc25b4ff9eb6f52392eef1e103daacc7519795f01",
-    "app_url": "http://api.example.com/super-scoring-app",
+    "app_url": "http://api.example.com/super-scoring-app/data",
     "app_reward": 10,
     "app_schema": "{\"score\":5}",
     "app_dependencies": [
@@ -36,6 +37,8 @@ The manifest file must be serialized as JSON and has the following fields:
 - Name: a human-readable name for the actor, which will be used in permission dialogs.
 
 - Description: a human-readable description for the actor, which will be used in permission dialogs along with the name.
+
+- Homepage URL: a URL where a user can get more information about the app, opt-in, and opt-out.
 
 - Picture URL: a square picture that represents the actor, which will be used in permission dialogs along with the name and description.
 

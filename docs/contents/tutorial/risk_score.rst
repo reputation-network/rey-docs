@@ -79,6 +79,7 @@ We'll build a service in Node.js that makes some computation out of the magic nu
     "name": "Risk Score",
     "description": "Returns a risk score based on your data",
     "address": "0x6d644c57247de51da20797f14dceedfbc4ef6561",
+    "homepage_url": "http://localhost:8083",
     "app_url": "http://localhost:8083/data",
     "app_reward": 0,
     "app_dependencies": ['0x88032398beab20017e61064af3c7c8bd38f4c968'],
@@ -113,6 +114,7 @@ This will launch a server that listens on port 8082 and has two endpoints:
     "name": "Risk Score",
     "description": "Returns a risk score based on your data",
     "address": "0x6d644c57247de51da20797f14dceedfbc4ef6561",
+    "homepage_url": "http://localhost:8083",
     "app_url": "http://localhost:8083/data",
     "app_reward": 0,
     "app_dependencies": ['0x88032398beab20017e61064af3c7c8bd38f4c968']

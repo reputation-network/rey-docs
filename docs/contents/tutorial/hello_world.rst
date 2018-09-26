@@ -56,6 +56,7 @@ We'll build a simple Ruby service that computes the magic number given a subject
     version: '1.0',
     name: 'Hello World',
     description: 'Returns a magic number',
+    homepage_url: "http://localhost:8081",
     address: '0x88032398beab20017e61064af3c7c8bd38f4c968',
     app_url: 'http://localhost:8081/data',
     app_reward: 0,
@@ -97,6 +98,7 @@ This will launch a server that listens on port 8080 and has two endpoints:
     "name": "Hello World",
     "description": "Returns a magic number",
     "address": "0x88032398beab20017e61064af3c7c8bd38f4c968",
+    "homepage_url": "http://localhost:8081",
     "app_url": "http://localhost:8081/data",
     "app_reward": 0,
     "app_dependencies": []
