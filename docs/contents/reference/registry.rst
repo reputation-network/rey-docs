@@ -19,13 +19,13 @@ A sample manifest file looks as follows:
     "name": "Super Scoring App",
     "description": "This app provides great risk scores",
     "picture_url": "http://example.com/logo-square.png",
-    "address": "c25b4ff9eb6f52392eef1e103daacc7519795f01",
+    "address": "0xc25b4ff9eb6f52392eef1e103daacc7519795f01",
     "app_url": "http://api.example.com/super-scoring-app",
     "app_reward": 10,
     "app_schema": "{\"score\":5}",
     "app_dependencies": [
-      "31bb9d47bc8bf6422ff7dcd2ff53bc90f8f7b009",
-      "88032398beab20017e61064af3c7c8bd38f4c968"
+      "0x31bb9d47bc8bf6422ff7dcd2ff53bc90f8f7b009",
+      "0x88032398beab20017e61064af3c7c8bd38f4c968"
     ]
   }
 
