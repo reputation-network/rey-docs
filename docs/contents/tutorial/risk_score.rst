@@ -4,6 +4,9 @@
 Risk score app
 ==============
 
+.. warning::
+    This tutorial app is unfinished, but left here as a starting point. Stay tuned for the final version.
+
 The sample risk score app is similar to the hello world one but has an app dependency. It gathers data from one app to build a risk score out of them.
 
 In general, a risk score would involve some computation out several data sources. In this case, we'll simply extract the magic number generated in the :ref:`hello world example <hello_world>` and multiply it by 2. The steps that are involved are:

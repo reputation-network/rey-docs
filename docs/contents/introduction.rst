@@ -33,16 +33,9 @@ In the :ref:`tutorial <tutorial>` section you can find the quick start guide to 
 
 Some sample apps have been already built as demo for developers. They use Traity as data source and do a computation on its data. They are deployed and ready to use without cost:
 
-- Your risk score
-- Your Traity reputation
-- Your popularity
-- Your pics
-- Your entropy
-- Your grammar score
-- Your life expectancy
-- Your public key score
-- Your horoscope
-- Your biorhythms
-- Your birthdate
-- Adult or not?
-- Your interests
+- `Bestreads app <http://github.com/reputation-network/rey-example-bestreads>`_: share your reading score.
+- `Birthdoc app <http://github.com/reputation-network/rey-example-birthdoc>`_: share your verified birthdate.
+- `Federation app <http://github.com/reputation-network/rey-example-federation>`_: bootstrap your reputation federation.
+- `Githubber app <http://github.com/reputation-network/rey-example-githubber>`_: share your programming languages.
+- `Magicnumber app <http://github.com/reputation-network/rey-example-magicnumber>`_: share your magic number.
+- `Spotistyle app <http://github.com/reputation-network/rey-example-spotistyle>`_: share your musical tastes.

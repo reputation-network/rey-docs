@@ -4,6 +4,9 @@
 Hello world app
 ===============
 
+.. note::
+    This tutorial has its source code on `GitHub <http://github.com/reputation-network/rey-example-magicnumber>`_ and it's available live at `Heroku <http://rey-example-magicnumber.herokuapp.com>`_.
+
 Our first REY app will simply return a magic number that is calculated out of the subject's public key. The steps that are involved are:
 
 - Start a blockchain node.
