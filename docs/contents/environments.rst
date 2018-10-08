@@ -51,8 +51,8 @@ Testnet
 
 The testnet enables your REY app to work outside your own development environment (i.e., your laptop or computer). It is available at Rinkeby Ethereum Testnet with the following addresses:
 
-- Main smart contract address: ``0x9dc83D95cbDfBfF70D8F19C5CB7143F28A201bd9`` (`view on Etherescan <https://rinkeby.etherscan.io/address/0x9dc83d95cbdfbff70d8f19c5cb7143f28a201bd9>`_).
+- Main smart contract address: ``0xF4f8787A17aBF8011Aef72dEa64bFBA1993E7F38`` (`view on Etherescan <https://rinkeby.etherscan.io/address/0x9dc83d95cbdfbff70d8f19c5cb7143f28a201bd9>`_).
 
-- Registry address: ``0xD4B80e54e3d4aFfa0D7DDe9332Aa8F4EbAAe8825`` (`view on Etherscan <https://rinkeby.etherscan.io/address/0xd4b80e54e3d4affa0d7dde9332aa8f4ebaae8825>`_).
+- Registry address: ``0xC05f9be01592902e133F398998E783b6cbD93813`` (`view on Etherscan <https://rinkeby.etherscan.io/address/0xd4b80e54e3d4affa0d7dde9332aa8f4ebaae8825>`_).
 
 To use the testnet, you'll need to set up your own Rinkeby node with your own, funded accounts. The contract addresses are already set up every time you pass ``test`` as environment to ``rey-cli``.
