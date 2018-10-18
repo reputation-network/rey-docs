@@ -5,6 +5,7 @@ Hello world app
 ===============
 
 .. note::
+
     This tutorial has its source code on `GitHub <http://github.com/reputation-network/rey-example-magicnumber>`_ and it's available live at `Heroku <http://rey-example-magicnumber.herokuapp.com>`_.
 
 Our first REY app will simply return a magic number that is calculated out of the subject's public key. The steps that are involved are:
@@ -37,6 +38,27 @@ This will launch the :ref:`development environment <development>` blockchain nod
 - Main smart contract address: ``0x76C19376b275A5d77858c6F6d5322311eEb92cf5``
 
 - Registry address: ``0x556ED3bEaF6b3dDCb1562d3F30f79bF86fFC05B9``
+
+Run a verifier
+--------------
+
+A :ref:`verifier <verifier>` is an important element in REY's architecture that checks that apps run as expected. From the practical point of view, a verifier needs to be running to use REY apps.
+
+To run a verifier, simply run:
+
+.. code::
+
+  $ rey-cli dev verifier -e VERIFIER_ADDRESS=0x44f1d336e4fdf189d2dadd963763883582c45312
+
+The verifier needs to be published on blockchain so that clients can find out its endpoint. To do so, just run:
+
+.. code::
+
+  $ rey-cli dev cmd publish-manifest 0x44f1d336e4fdf189d2dadd963763883582c45312 http://localhost:8082/manifest
+
+.. note::
+
+  The development blockchain node has built-in accounts that have no password. When running REY commands, simply enter a blank password when prompted.
 
 App logic
 ---------
@@ -137,11 +159,6 @@ You can publish the app's manifest with:
   $ rey-cli dev cmd publish-manifest 0x88032398beab20017e61064af3c7c8bd38f4c968 http://localhost:8081/manifest
 
 Remember that the manifest URL needs to be gatekeeper's one, as that's the one that does not require authentication. Gatekeeper will proxy the request to the manifest provided by the Ruby service.
-
-.. note::
-
-  The development blockchain node has built-in accounts that have no password. When running REY commands, simply enter a blank password when prompted.
-
 
 Reading the app
 ---------------

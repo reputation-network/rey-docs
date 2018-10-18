@@ -43,6 +43,27 @@ This will launch the :ref:`development environment <development>` blockchain nod
 
 - Registry address: ``0x556ED3bEaF6b3dDCb1562d3F30f79bF86fFC05B9``
 
+Run a verifier
+--------------
+
+A :ref:`verifier <verifier>` is an important element in REY's architecture that checks that apps run as expected. From the practical point of view, a verifier needs to be running to use REY apps.
+
+To run a verifier, simply run:
+
+.. code::
+
+  $ rey-cli dev verifier -e VERIFIER_ADDRESS=0x44f1d336e4fdf189d2dadd963763883582c45312
+
+The verifier needs to be published on blockchain so that clients can find out its endpoint. To do so, just run:
+
+.. code::
+
+  $ rey-cli dev cmd publish-manifest 0x44f1d336e4fdf189d2dadd963763883582c45312 http://localhost:8082/manifest
+
+.. note::
+
+  The development blockchain node has built-in accounts that have no password. When running REY commands, simply enter a blank password when prompted.
+
 Run hello world app
 -------------------
 
@@ -147,10 +168,6 @@ You can publish the app's manifest with:
 .. code::
 
   $ rey-cli dev cmd publish-manifest 0x6d644c57247de51da20797f14dceedfbc4ef6561 http://localhost:8083/manifest
-
-.. note::
-
-  The development blockchain node has built-in accounts that have no password. When running REY commands, simply enter a blank password when prompted.
 
 Reading the app
 ---------------
