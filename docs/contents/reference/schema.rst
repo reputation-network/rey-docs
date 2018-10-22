@@ -56,7 +56,7 @@ For this, again we'll replace values with the maximum expected JSON-stringified 
 
 .. code:: javascript
 
-  /* App sample output */
+  /* App schema */
   { "cities": [ { "name": 30, "country": 30 }, 10 ] }
 
 It can be observed that there are no specific type checks. The objective of schema checks is not doing type checks, but to prevent data leaks. Therefore, the amount of allowed data is what only matters, as both numbers or strings can be disguised as different data types by using different encodings.
