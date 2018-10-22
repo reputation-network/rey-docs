@@ -82,6 +82,7 @@ We'll build a simple Ruby service that computes the magic number given a subject
     address: '0x88032398beab20017e61064af3c7c8bd38f4c968',
     app_url: 'http://localhost:8081/data',
     app_reward: 0,
+    app_schema: { data: 30 },
     app_dependencies: []
   }.freeze
   APP_SEED = (MANIFEST[:address] + ENV['SECRET_SALT'].to_s).to_i(16).freeze
@@ -123,10 +124,13 @@ This will launch a server that listens on port 8080 and has two endpoints:
     "homepage_url": "http://localhost:8081",
     "app_url": "http://localhost:8081/data",
     "app_reward": 0,
+    "app_schema": { "data": 30 },
     "app_dependencies": []
   }
 
 As you can see, we're using the address ``0x88032398beab20017e61064af3c7c8bd38f4c968`` to identify the app. This address was mentioned before, as it's one of the accounts that are funded and ready to use in the development blockchain node. A similar process would be required in a production environment (i.e., obtaining an account and funding it).
+
+The schema shows the expected output of the app, which in this case will be an object with just a key called ``data`` and a value that can have a JSON-stringified length of up to 30 bytes. You can learn more about defining an app schema in the :ref:`schema section <schema>`.
 
 - ``/data``: Returns the actual output of the app (a magic number).
 

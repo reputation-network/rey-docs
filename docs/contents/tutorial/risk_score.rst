@@ -141,7 +141,9 @@ This will launch a server that listens on port 8082 and has two endpoints:
     "app_dependencies": ['0x88032398beab20017e61064af3c7c8bd38f4c968']
   }
 
-As you can see, we're using the address ``0x6d644c57247de51da20797f14dceedfbc4ef6561`` to identify the app. This address was mentioned before, as it's one of the accounts that are funded and ready to use in the development blockchain node, and it's different from hello world's address. Also, note that the dependency of hello world app is stated by including hello world app's address in the ``app_dependencies`` list.
+As you can see, we're using the address ``0x6d644c57247de51da20797f14dceedfbc4ef6561`` to identify the app. This address was mentioned before, as it's one of the accounts that are funded and ready to use in the development blockchain node, and it's different from hello world's address. Also, note that the dependency of hello world app is stated by including risk score app's address in the ``app_dependencies`` list.
+
+The schema shows the expected output of the app, which in this case will be an object with just a key called ``data`` and a value that can have a JSON-stringified length of up to 30 bytes. You can learn more about defining an app schema in the :ref:`schema section <schema>`.
 
 - ``/data``: Returns the actual output of the app.
 

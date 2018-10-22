@@ -23,7 +23,7 @@ A sample manifest file looks as follows:
     "address": "0xc25b4ff9eb6f52392eef1e103daacc7519795f01",
     "app_url": "http://api.example.com/super-scoring-app/data",
     "app_reward": 10,
-    "app_schema": "{\"score\":5}",
+    "app_schema": { "score": 5 },
     "app_dependencies": [
       "0x31bb9d47bc8bf6422ff7dcd2ff53bc90f8f7b009",
       "0x88032398beab20017e61064af3c7c8bd38f4c968"
@@ -52,6 +52,6 @@ The manifest file must be serialized as JSON and has the following fields:
 
 - App reward: the expected reward for the app's service. If omitted, zero reward is assumed.
 
-- App schema: the schema to be used by the app when returning its output.
+- App schema: the :ref:`schema <schema>`_ to be used by the app when returning its output.
 
 - App dependencies: a list of address for whom the app needs read permissions to properly run.

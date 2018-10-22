@@ -11,6 +11,7 @@ Reference
     reference/transactions.rst
     reference/gatekeeper.rst
     reference/serializations.rst
+    reference/schema.rst
     reference/registry.rst
     reference/verifier.rst
     reference/projects.rst
