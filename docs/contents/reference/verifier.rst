@@ -47,3 +47,4 @@ The verifier can be configured using the following environment variables:
 - ``MANIFEST_HOMEPAGE_URL``: The manifest's home page URL.
 - ``MANIFEST_PICTURE_URL``:  The manifest's public picture URL.
 - ``VERIFIER_URL``:  The manifest's verifier URL. Defaults to ``http://localhost:8082/data``.
+- ``VERIFIER_ACCOUNT_PASSWORD``: The verifier account's password that is used in the blockchain node. The account is used to sign transactions for the target apps.
