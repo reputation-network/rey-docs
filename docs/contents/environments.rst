@@ -56,3 +56,5 @@ The testnet enables your REY app to work outside your own development environmen
 - Registry address: ``0xC05f9be01592902e133F398998E783b6cbD93813`` (`view on Etherscan <https://rinkeby.etherscan.io/address/0xC05f9be01592902e133F398998E783b6cbD93813>`_).
 
 To use the testnet, you'll need to set up your own Rinkeby node with your own, funded accounts. The contract addresses are already set up every time you pass ``test`` as environment to ``rey-cli``.
+
+You can use Traity's verifier (``0xd91f44fee5e3b81f61b4e7ab7fddf3f4caab1220``) to run your REY apps.
