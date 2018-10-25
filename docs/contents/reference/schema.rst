@@ -36,7 +36,7 @@ Let's consider a more complex example. Now the app returns more detailed informa
   /* App sample output */
   { "city": { "name": "Madrid", "country": "Spain" } }
 
-For this type of output, the sample approach would apply. We'll assume countries will have a maximum JSON-stringified length of 30 bytes. The app schema would be:
+For this type of output, the same approach would apply. We'll assume countries will have a maximum JSON-stringified length of 30 bytes. The app schema would be:
 
 .. code:: javascript
 
@@ -52,7 +52,7 @@ Finally, let's assume an app returns a list of up to 10 favourite cities. One sa
                 { "name": "Valencia", "country": "Spain" },
                 { "name": "San Francisco", "country": "USA" } ] }
 
-For this, again we'll replace values with the maximum expected JSON-stringified length. For the array, two elements are used: the first one is the expected schema of each item, and the last one is the maximum length of the array. As said, we'll only support a maximum of 10 favourite cities, so the schema is as follows:
+To build the schema, we'll replace values with the maximum expected JSON-stringified length again. For the array, two elements are used: the first one is the expected schema of each item, and the last one is the maximum length of the array. As said, we'll only support a maximum of 10 favourite cities, so the schema is as follows:
 
 .. code:: javascript
 
