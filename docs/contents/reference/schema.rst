@@ -116,3 +116,40 @@ The function used by verifiers to check that an app's output fits its schema is 
     return true;
   };
 
+Encryption
+----------
+
+Verifiers work on encrypted data. This means that they cannot just apply all of the above on raw data as is shown.
+
+Let's consider again the following app output:
+
+.. code:: javascript
+
+  /* App sample output */
+  { "city": "Madrid" }
+
+To know what a verifier will be able to see, let's encrypt it using `rey-sdk-js <http://github.com/reputation-network/rey-sdk-js>`_ and some random key pair:
+
+.. code::
+
+  $ node
+  > const REY = require("rey-sdk");
+  > let key = new REY.Utils.EncryptionKey()
+  > key.createPair();
+  > key.encrypt({ "city": "Madrid" });
+  { city: 'cFwfPaP3E/4tcryywWYEDN7go+pi1uTpA7jy7clI17KKO/nO0YuZ5vS3i7Ea9n/y3LOF4cajYQOAQt/lBwDMsA==' }
+
+As you can see, the string ``"Madrid"`` becomes ``"cFwfPaP3E/4tcryywWYEDN7go+pi1uTpA7jy7clI17KKO/nO0YuZ5vS3i7Ea9n/y3LOF4cajYQOAQt/lBwDMsA=="``. This is an encrypted, Base64-encoded version of the string "Madrid". Trying with a longer string produces a similar result:
+
+.. code::
+
+  > key.encrypt({ "city": "San Francisco" });
+  { city: 'Dmr8kPZYYO9k3pQBhSRbp64bP2+fuOET7HcDONjXecFzvc9s77C6P2H/xpLrww9ucjyDkH+YKljjepqor28ynQ==' }
+
+The string ``"San Francisco"`` produces another Base64 string which has the same length as the previous one. As ``"San Francisco"`` is longer than ``"Madrid"``, this means that the encryption algorithm hides the real length of the unencrypted data.
+
+The ``pkcs1`` encryption algorithm being used provides an output whose length is a multiple of 64 bytes for every 22 bytes, which, after converting it to Base64, becomes `even longer <https://en.wikipedia.org/wiki/Base64>`_.
+
+In order to estimate the length of the original, unencrypted data, the verifier reverse engineers the above formula. This lets verifiers estimate how many minimum bytes are actually being sent and detect those cases where there's a clear excess of information, compared to the schema.
+
+As verifiers reverse engineer the unencrypted data length, encryption doesn't change the way schemas should be defined. Nevertheless, it's important to notice that a verifier cannot really make a difference between an unencrypted length of 14 and a length of 16 (as both would produce Base64 strings that are equally long). However, verifiers would spot a leak if the unencrypted length being transmitted is, e.g., 80, as it would produce a much longer encrypted string.

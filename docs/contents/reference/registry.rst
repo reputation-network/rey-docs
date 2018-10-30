@@ -52,6 +52,6 @@ The manifest file must be serialized as JSON and has the following fields:
 
 - App reward: the expected reward for the app's service. If omitted, zero reward is assumed.
 
-- App schema: the :ref:`schema <schema>`_ to be used by the app when returning its output.
+- App schema: the :ref:`schema <schema>` to be used by the app when returning its output.
 
 - App dependencies: a list of address for whom the app needs read permissions to properly run.
