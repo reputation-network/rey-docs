@@ -139,7 +139,7 @@ To know what a verifier will be able to see, let's encrypt it using `rey-sdk-js 
   > key.encrypt({ "city": "Madrid" });
   { city: 'cFwfPaP3E/4tcryywWYEDN7go+pi1uTpA7jy7clI17KKO/nO0YuZ5vS3i7Ea9n/y3LOF4cajYQOAQt/lBwDMsA==' }
 
-As you can see, the string ``"Madrid"`` becomes ``"cFwfPaP3E/4tcryywWYEDN7go+pi1uTpA7jy7clI17KKO/nO0YuZ5vS3i7Ea9n/y3LOF4cajYQOAQt/lBwDMsA=="``. This is an encrypted, Base64-encoded version of the string "Madrid". Trying with a longer string produces a similar result:
+As you can see, the string ``"Madrid"`` becomes ``"cFwfPaP3E/4tcryywWYEDN7go+pi1uTpA7jy7clI17KKO/nO0YuZ5vS3i7Ea9n/y3LOF4cajYQOAQt/lBwDMsA=="``. This is an encrypted, Base64-encoded version of the string ``"Madrid"``. Trying with a longer string produces a similar result:
 
 .. code::
 
