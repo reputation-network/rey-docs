@@ -84,7 +84,7 @@ The function used by verifiers to check that an app's output fits its schema is 
 .. code::
 
   function checkSchema(data, schema) {
-    if (typeof(schema) == 'number') {
+    if (typeof(schema) === 'number') {
       if (JSON.stringify(data).length > schema) {
         return false;
       }
@@ -101,11 +101,11 @@ The function used by verifiers to check that an app's output fits its schema is 
         }
       }
     } else {
-      if (typeof(data) != 'object') {
+      if (typeof(data) !== 'object') {
         return false;
       }
       for (let key in data) {
-        if (Object.keys(schema).indexOf(key) == -1) {
+        if (Object.keys(schema).indexOf(key) === -1) {
           return false;
         }
         if (!checkSchema(data[key], schema[key])) {
